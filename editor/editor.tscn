@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b87a10fgu7ijx"]
 
-[ext_resource type="Script" uid="uid://4g7nfq3bd3rk" path="res://editor/editor.gd" id="1_ycap1"]
+[ext_resource type="Script" uid="uid://4g7nfq3bd3rk" path="res://main.gd" id="1_ycap1"]
 
 [node name="Editor" type="GraphEdit" unique_id=1830274559]
 anchors_preset = 15
