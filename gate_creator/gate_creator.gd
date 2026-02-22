@@ -14,7 +14,42 @@ signal closed;
 
 func _ready() -> void:
 	save_button.connect("pressed", _on_button_save_pressed);
-	exit_button.connect("pressed", _on_button_exit_pressed)
+	exit_button.connect("pressed", _on_button_exit_pressed);
+	setup_pro_highlighter();
+
+func setup_pro_highlighter():
+	var hl = CodeHighlighter.new();
+	
+	code_edit.add_theme_color_override("font_color", Color("#abb2bf")); 
+	code_edit.add_theme_color_override("line_number_color", Color("#4b5263"));
+	code_edit.add_theme_color_override("current_line_color", Color("#2c313c"));
+	
+	hl.symbol_color = Color("#56b6c2");            
+	hl.number_color = Color("#d19a66");            
+	hl.function_color = Color("#61afef");          
+	hl.member_variable_color = Color("#e06c75"); 
+	
+	var control_flow = ["extends", "class_name", "enum", "const", "var", "func", "static", "signal"];
+	for kw in control_flow:
+		hl.add_keyword_color(kw, Color("#c678dd"));
+		
+	var logic = ["if", "else", "elif", "for", "while", "match", "return", "pass", "break", "continue"];
+	for kw in logic:
+		hl.add_keyword_color(kw, Color("#c678dd"));
+
+	var types = ["int", "float", "bool", "String", "Vector2", "Array", "Dictionary", "void"];
+	for kw in types:
+		hl.add_keyword_color(kw, Color("#e5c07b"));
+
+	hl.add_keyword_color("true", Color("#d19a66"));
+	hl.add_keyword_color("false", Color("#d19a66"));
+	hl.add_keyword_color("null", Color("#d19a66"));
+
+	hl.add_color_region("#", "", Color("#5c6370"), false);  
+	hl.add_color_region('"', '"', Color("#98c379"), false); 
+	hl.add_color_region("'", "'", Color("#98c379"), false);
+
+	code_edit.syntax_highlighter = hl;
 
 func _on_button_exit_pressed() -> void:
 	closed.emit();

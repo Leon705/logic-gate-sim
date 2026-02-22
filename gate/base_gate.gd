@@ -8,10 +8,6 @@ var input_states: Array[bool] = [];
 var num_inputs: int = 0;
 var num_outputs: int = 0;
 
-func _init(p_in: int = 2, p_out: int = 1) -> void:
-	num_inputs = p_in;
-	num_outputs = p_out;
-
 func _ready() -> void:
 	_setup_slots();
 	

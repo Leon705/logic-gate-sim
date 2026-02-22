@@ -74,4 +74,3 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_action("delete"):
 			_remove_selected_nodes();
-		

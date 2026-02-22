@@ -16,6 +16,8 @@ layout_mode = 2
 [node name="VBoxContainer" type="VSplitContainer" parent="HBoxContainer" unique_id=1011064309]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=339706845]
 layout_mode = 2
@@ -53,11 +55,35 @@ text = "Save"
 [node name="CodeEdit" type="CodeEdit" parent="HBoxContainer" unique_id=1038637752]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "class_name {GATE_NAME}
-extends BaseGate
+theme_override_font_sizes/font_size = 13
+text = "extends BaseGate
 
+# bool output_state represents current output value
+# Array[bool] input_states represents current input values
+  
+# --- Initialization ---
+func _ready() -> void:
+	super();
+
+# --- Logic Implementation (OVERRIDE) ---
 func _compute(inputs: Array[bool]) -> bool:
-	return false;"
+	# 'inputs' is an array of booleans matching num_inputs.
+	# Example AND logic:
+	# return inputs[0] and inputs[1];
+	return false;
+
+# --- Visual Updates (OPTIONAL OVERRIDE) ---
+func _update_visuals() -> void:
+	# Change colors or play animations here based on 'output_state'
+	pass;
+
+func _get_slot_ui_component(_idx: int) -> Control:
+		# example implementation
+		# var component = Control.new();
+		# component.custom_minimum_size.y = 20;
+		# component.mouse_filter = Control.MOUSE_FILTER_IGNORE;
+		# return component;
+	return super(_idx);"
 emoji_menu_enabled = false
 scroll_smooth = true
 minimap_draw = true

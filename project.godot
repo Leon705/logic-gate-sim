@@ -21,8 +21,8 @@ GateFactory="*uid://bl0ceukfvk5co"
 
 [display]
 
-window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/stretch/scale=2.0
 
 [input]
 
