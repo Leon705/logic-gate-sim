@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GateDefinition" format=3 uid="uid://c64tqjbaph8gk"]
+
+[ext_resource type="Script" uid="uid://1rllsn5ho3j5" path="res://gate/impl/not_gate.gd" id="1_mxe7h"]
+[ext_resource type="Script" uid="uid://dlijyu0gn6xeb" path="res://global/gate_definition.gd" id="2_pblfy"]
+
+[resource]
+script = ExtResource("2_pblfy")
+type_id = "NOT"
+title = "1"
+gate_script = ExtResource("1_mxe7h")
+num_inputs = 1
+num_outputs = 1
+metadata/_custom_type_script = "uid://dlijyu0gn6xeb"

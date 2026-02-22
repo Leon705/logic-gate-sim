@@ -1,0 +1,10 @@
+res://editor/editor.tscn::176b44c5405cb61b9320c3d171a36d1e::1771706268::res://.godot/exported/133200997/export-1d905b87f5472ca45be1d52ce460da15-editor.scn
+res://gate/base_gate.tscn::e3f12e2b46927efd1983431cd8d3b2c4::1771694162::res://.godot/exported/133200997/export-90608d611c4a44d5fafe771d9c25e4cd-base_gate.scn
+res://gate_creator/gate_creator.tscn::89779ae9ba878121c32e41001f7c048c::1771708657::res://.godot/exported/133200997/export-60311c90604147216e997586883ca064-gate_creator.scn
+res://gate_definition/and_definition.tres::ea5fc039d8c61f91e4911832956f9cfd::1771686947::res://.godot/exported/133200997/export-7931fd09d9a50ad0e632d8cdd25101d3-and_definition.res
+res://gate_definition/input_switch_definition.tres::1853488841164e4b88335c12a9892747::1771690626::res://.godot/exported/133200997/export-293b565e7f919b0cceb15f8ba6ddb749-input_switch_definition.res
+res://gate_definition/not_definition.tres::39ca12630698db3309b0b43d7611804b::1771694794::res://.godot/exported/133200997/export-5834ae3b8a00293fe48c774fa8cfc1db-not_definition.res
+res://gate_definition/or_definition.tres::3779a7eac60d5ecc32a994a811112187::1771717091::res://.godot/exported/133200997/export-7a5625504f8edc931ea5792034ec2106-or_definition.res
+res://gate_definition/output_diode_definition.tres::42750dd46f4a5d0e3ef4a3b41a3d35fd::1771693864::res://.godot/exported/133200997/export-64742fd237430bd933efc8249ca0a8a8-output_diode_definition.res
+res://gate_definition/xor_definition.tres::03cfdd64dec6c86b49c9acdf91478d53::1771694771::res://.godot/exported/133200997/export-08ccd3e973124799af029bced92787b0-xor_definition.res
+res://main.tscn::b9953c5e85b8ad9c81b741f93e369b9c::1771719822::res://.godot/exported/133200997/export-3070c538c03ee49b7677ff960a3f5195-main.scn

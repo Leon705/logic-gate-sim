@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GateDefinition" format=3 uid="uid://dubwlr33tepgw"]
+
+[ext_resource type="Script" uid="uid://b55bvobkd0htl" path="res://gate/impl/output_diode.gd" id="1_c1va6"]
+[ext_resource type="Script" uid="uid://dlijyu0gn6xeb" path="res://global/gate_definition.gd" id="1_vauhc"]
+
+[resource]
+script = ExtResource("1_vauhc")
+type_id = "OUTPUT_DIODE"
+title = "Diode"
+gate_script = ExtResource("1_c1va6")
+num_inputs = 1
+metadata/_custom_type_script = "uid://dlijyu0gn6xeb"

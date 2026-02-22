@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GateDefinition" format=3 uid="uid://kb7oyg4vy424"]
+
+[ext_resource type="Script" uid="uid://cc3qa21xqpf2u" path="res://gate/impl/xor_gate.gd" id="1_t1e78"]
+[ext_resource type="Script" uid="uid://dlijyu0gn6xeb" path="res://global/gate_definition.gd" id="2_t1e78"]
+
+[resource]
+script = ExtResource("2_t1e78")
+type_id = "XOR"
+title = "=1"
+gate_script = ExtResource("1_t1e78")
+num_inputs = 2
+num_outputs = 1
+metadata/_custom_type_script = "uid://dlijyu0gn6xeb"

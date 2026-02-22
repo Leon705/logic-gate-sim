@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://lkyfs0iy3bfx"]
+
+[ext_resource type="Script" uid="uid://4g7nfq3bd3rk" path="res://editor/editor.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bektvjpbn42ml" path="res://gate_creator/gate_creator.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://hqntw52v7ilg" path="res://global/manifest_generator.gd" id="3_h2yge"]
+
+[node name="Control" type="GraphEdit" unique_id=46918421]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+grid_pattern = 1
+right_disconnects = true
+show_arrange_button = false
+script = ExtResource("1_0xm2m")
+metadata/_edit_use_anchors_ = true
+
+[node name="GateCreator" parent="." unique_id=1877143126 instance=ExtResource("2_h2yge")]
+visible = false
+z_index = 1
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PopupMenu" type="PopupMenu" parent="." unique_id=1682157565]
+oversampling_override = 1.0
+
+[node name="Node" type="Node" parent="." unique_id=1293832857]
+process_mode = 4
+script = ExtResource("3_h2yge")

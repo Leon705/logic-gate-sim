@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GateDefinition" format=3 uid="uid://d2svreuipcsjg"]
+
+[ext_resource type="Script" uid="uid://d3mlmuvvqe2tp" path="res://gate/impl/or_gate.gd" id="1_v358w"]
+[ext_resource type="Script" uid="uid://dlijyu0gn6xeb" path="res://global/gate_definition.gd" id="2_laq0v"]
+
+[resource]
+script = ExtResource("2_laq0v")
+type_id = "OR"
+title = ">=1"
+gate_script = ExtResource("1_v358w")
+num_inputs = 2
+num_outputs = 1
+metadata/_custom_type_script = "uid://dlijyu0gn6xeb"

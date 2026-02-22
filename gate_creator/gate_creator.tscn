@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bektvjpbn42ml"]
+
+[ext_resource type="Script" uid="uid://01hhmf6oswp0" path="res://gate_creator/gate_creator.gd" id="1_lln0y"]
+
+[node name="GateCreator" type="PanelContainer" unique_id=1877143126]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lln0y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=431959086]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VSplitContainer" parent="HBoxContainer" unique_id=1011064309]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=339706845]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="type_id" type="LineEdit" parent="HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1358418485]
+layout_mode = 2
+placeholder_text = "gate_id"
+
+[node name="title" type="LineEdit" parent="HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1343170251]
+layout_mode = 2
+placeholder_text = "title"
+
+[node name="num_inputs" type="SpinBox" parent="HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1841767168]
+layout_mode = 2
+suffix = "in"
+
+[node name="num_outputs" type="SpinBox" parent="HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1019928688]
+layout_mode = 2
+suffix = "out"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=464640075]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=832099329]
+layout_mode = 2
+text = "Exit"
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1651980504]
+layout_mode = 2
+text = "Save"
+
+[node name="CodeEdit" type="CodeEdit" parent="HBoxContainer" unique_id=1038637752]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "class_name {GATE_NAME}
+extends BaseGate
+
+func _compute(inputs: Array[bool]) -> bool:
+	return false;"
+emoji_menu_enabled = false
+scroll_smooth = true
+minimap_draw = true
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+symbol_lookup_on_click = true
+symbol_tooltip_on_hover = true
+line_folding = true
+gutters_draw_line_numbers = true
+code_completion_enabled = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true

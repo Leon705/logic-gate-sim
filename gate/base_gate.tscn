@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dbd4oda8i256m"]
+
+[ext_resource type="Script" uid="uid://7rmsqydsbied" path="res://gate/base_gate.gd" id="1_vd633"]
+
+[node name="base_gate" type="GraphNode" unique_id=1119266731]
+offset_right = 56.0
+offset_bottom = 75.0
+script = ExtResource("1_vd633")
+metadata/_edit_use_anchors_ = true

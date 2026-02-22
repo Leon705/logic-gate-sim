@@ -1,0 +1,1 @@
+res://gate_definition/and_definition.tres,res://gate_definition/input_switch_definition.tres,res://gate_definition/not_definition.tres,res://gate_definition/or_definition.tres,res://gate_definition/output_diode_definition.tres,res://gate_definition/xor_definition.tres
