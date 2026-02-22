@@ -15,7 +15,6 @@ func _ready() -> void:
 	GateFactory.registry_updated.connect(_on_registry_updated);
 	
 	_init_context_menu();
-	
 
 func _on_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	var target = get_node(str(to_node)) as BaseGate;
@@ -67,9 +66,19 @@ func _on_popup_request(at_position: Vector2) -> void:
 func _on_registry_updated() -> void:
 	context_menu.clear(true);
 	_init_context_menu();
-	
+
+func _remove_selected_nodes():
+	for child in get_children():
+		if child is GraphNode and child.selected:
+			for connection in get_connection_list_from_node(child.name):
+				_on_disconnection_request(connection.from_node, connection.from_port, connection.to_node, connection.to_port)
+			child.queue_free()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_action("gate_creator"):
-		$GateCreator.show();
+	if event is InputEventKey:
+		if event.is_action("gate_creator"):
+			$GateCreator.show();
+		
+		elif event.is_action("delete"):
+			_remove_selected_nodes();
 		
