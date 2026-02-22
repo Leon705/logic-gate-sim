@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1771719843|3623081859';
+const CACHE_VERSION = '1771726047|9826454624';
 /** @type {string} */
 const CACHE_PREFIX = 'LogicGateSim-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;

@@ -4,7 +4,15 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 		<title>LogicGateSim</title>
-		<style>
+	<link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/editor/editor.main.min.css">
+<style>
+    #monaco-container {
+        position: absolute;
+        visibility: hidden; 
+        z-index: 10;
+        border: 1px solid #444;
+    }
+	
 html, body, #canvas {
 	margin: 0;
 	padding: 0;
@@ -96,6 +104,38 @@ body {
 
 	</head>
 	<body>
+
+<div id="monaco-container" style="width:500px; height:300px;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+<script src="https://unpkg.com/monaco-editor-gdscript@1.0.1/dist/index.js"></script>
+
+<script>
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' }});
+    require(['vs/editor/editor.main'], function() {
+        // Initialisierung des Editors
+        window.editor = monaco.editor.create(document.getElementById('monaco-container'), {
+            value: '# Selektiere ein Gatter...',
+            language: 'gdscript',
+            theme: 'vs-dark',
+            automaticLayout: true
+        });
+    });
+
+    // Hilfsfunktionen für Godot
+    window.showEditor = (x, y, w, h) => {
+        const el = document.getElementById('monaco-container');
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+        el.style.width = w + "px";
+        el.style.height = h + "px";
+        el.style.visibility = "visible";
+    };
+
+    window.hideEditor = () => {
+        document.getElementById('monaco-container').style.visibility = "hidden";
+    };
+</script>
 		<canvas id="canvas">
 			Your browser does not support the canvas tag.
 		</canvas>
@@ -218,4 +258,5 @@ const engine = new Engine(GODOT_CONFIG);
 		</script>
 	</body>
 </html>
+
 
