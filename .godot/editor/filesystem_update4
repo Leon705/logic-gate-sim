@@ -1,8 +1,0 @@
-res://main.tscn
-res://global/manifest_generator.gd
-res://global/gate_factory.gd
-res://editor/editor.gd
-res://gate_definition/or_definition.tres
-res://gate_creator/gate_creator.gd
-res://export_presets.cfg
-res://gate_manifest.txt
