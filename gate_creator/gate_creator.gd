@@ -10,8 +10,14 @@ extends PanelContainer
 @onready var save_button: Button = $HBoxContainer/VBoxContainer/VBoxContainer2/Button2;
 @onready var code_edit: CodeEdit = $HBoxContainer/CodeEdit;
 
+signal closed;
+
 func _ready() -> void:
 	save_button.connect("pressed", _on_button_save_pressed);
+	exit_button.connect("pressed", _on_button_exit_pressed)
+
+func _on_button_exit_pressed() -> void:
+	closed.emit();
 
 func _on_button_save_pressed() -> void:
 	var raw_id = type_id_edit.text.strip_edges().replace(" ", "_");
@@ -55,3 +61,4 @@ func _on_button_save_pressed() -> void:
 		hide();
 	else:
 		print("ERROR beim Speichern der Resource: ", res_error);
+	closed.emit();
