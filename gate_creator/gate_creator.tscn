@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bektvjpbn42ml"]
 
 [ext_resource type="Script" uid="uid://01hhmf6oswp0" path="res://gate_creator/gate_creator.gd" id="1_lln0y"]
+[ext_resource type="FontFile" uid="uid://bpsspg2ux7ih5" path="res://fonts/JetBrainsMono-Regular.ttf" id="2_klhxe"]
 
 [node name="GateCreator" type="PanelContainer" unique_id=1877143126]
 anchors_preset = 15
@@ -55,6 +56,7 @@ text = "Save"
 [node name="CodeEdit" type="CodeEdit" parent="HBoxContainer" unique_id=1038637752]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_klhxe")
 theme_override_font_sizes/font_size = 13
 text = "extends BaseGate
 

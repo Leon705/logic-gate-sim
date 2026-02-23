@@ -7,6 +7,7 @@ var input_states: Array[bool] = [];
 
 var num_inputs: int = 0;
 var num_outputs: int = 0;
+var type_id: String = "";
 
 func _ready() -> void:
 	_setup_slots();

@@ -39,5 +39,6 @@ func create_gate(type_id: String) -> BaseGate:
 	gate.num_inputs = def.num_inputs;
 	gate.num_outputs = def.num_outputs;
 	gate.title = def.title;
+	gate.type_id = def.type_id;
 
 	return gate;

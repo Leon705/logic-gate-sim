@@ -74,3 +74,21 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_action("delete"):
 			_remove_selected_nodes();
+
+func to_json() -> String:
+	var data = {
+		"nodes": [],
+		"connections": get_connection_list()
+	};
+
+	for child in get_children():
+		if child is BaseGate:
+			var node_data = {
+				"name": child.title,
+				"type": child.type_id,
+				"pos_x": child.position_offset.x,
+				"pos_y": child.position_offset.y,
+				"script_path": child.get_script().get_path()
+			};
+			data["nodes"].append(node_data);
+	return JSON.stringify(data, "\t");
