@@ -28,6 +28,10 @@ window/size/viewport_height=720
 window/stretch/aspect="expand"
 window/stretch/scale=2.0
 
+[gui]
+
+theme/custom_font="uid://bpsspg2ux7ih5"
+
 [input]
 
 context_menu={
