@@ -58,8 +58,10 @@ func _on_context_menu_item_selected(id: int) -> void:
 	var spawn_pos = (scroll_offset + (context_menu.position as Vector2)) / zoom;
 	
 	var gate = GateFactory.create_gate(type_id);
-	add_child(gate);
 	gate.position_offset = spawn_pos;
+	
+	add_child(gate);
+	gate.queued.connect(queue_signal);
 	
 func _on_popup_request(at_position: Vector2) -> void:
 	context_menu.position = get_screen_transform().origin + at_position;
@@ -108,6 +110,8 @@ func load_json(json: String):
 			var custom_script = load(node["script_path"]);
 			gate.set_script(custom_script);
 		gate.name = node["name"];
+		gate.queued.connect(queue_signal);
+		
 		add_child(gate);
 		gate.position_offset = Vector2(node["pos_x"], node["pos_y"]);
 		
@@ -132,8 +136,8 @@ func _run_simulation() -> void:
 			
 		steps += 1;
 	
+	# handle endless loop
 	if steps >= max_steps:
-		print("ACHTUNG: Endlosschleife entdeckt! (Z.B. NOT-Gatter Kurzschluss). Simulation gestoppt.");
 		signal_queue.clear();
 		
 	is_simulating = false;

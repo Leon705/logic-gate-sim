@@ -9,6 +9,8 @@ var num_inputs: int = 0;
 var num_outputs: int = 0;
 var type_id: String = "";
 
+signal queued(target_node: BaseGate, port: int, value: bool);
+
 func _ready() -> void:
 	_setup_slots();
 	
@@ -21,7 +23,7 @@ func _set_input_value(port_idx: int, value: bool) -> void:
 			return;
 
 		input_states[port_idx] = value;
-		_process_logic.call_deferred();
+		_process_logic();
 		
 func _process_logic():
 	var new_output = _compute(input_states);
@@ -35,8 +37,7 @@ func _propagate_signal() -> void:
 		for next in followers[0]:
 			var node = next.node as BaseGate; 
 			if is_instance_valid(node):
-				get_parent().queue_signal(node, next.port, output_state);
-				#node._set_input_value(next.port, output_state);
+				queued.emit(node, next.port, output_state);
 
 func _add_follower(out_port: int, target_node: BaseGate, in_port: int) -> void:
 	if not followers.has(out_port):
