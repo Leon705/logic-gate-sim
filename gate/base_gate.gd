@@ -17,8 +17,11 @@ func _compute(_inputs: Array[bool]) -> bool:
 
 func _set_input_value(port_idx: int, value: bool) -> void:
 	if port_idx < input_states.size():
+		if input_states[port_idx] == value:
+			return;
+
 		input_states[port_idx] = value;
-		_process_logic();
+		_process_logic.call_deferred();
 		
 func _process_logic():
 	var new_output = _compute(input_states);
@@ -32,7 +35,8 @@ func _propagate_signal() -> void:
 		for next in followers[0]:
 			var node = next.node as BaseGate; 
 			if is_instance_valid(node):
-				node._set_input_value(next.port, output_state);
+				get_parent().queue_signal(node, next.port, output_state);
+				#node._set_input_value(next.port, output_state);
 
 func _add_follower(out_port: int, target_node: BaseGate, in_port: int) -> void:
 	if not followers.has(out_port):
