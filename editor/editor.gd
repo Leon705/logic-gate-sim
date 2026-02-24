@@ -84,7 +84,7 @@ func to_json() -> String:
 	for child in get_children():
 		if child is BaseGate:
 			var node_data = {
-				"name": child.title,
+				"name": child.name,
 				"type": child.type_id,
 				"pos_x": child.position_offset.x,
 				"pos_y": child.position_offset.y,
@@ -92,3 +92,18 @@ func to_json() -> String:
 			};
 			data["nodes"].append(node_data);
 	return JSON.stringify(data, "\t");
+
+func load_json(json: String):
+	var data = JSON.parse_string(json);
+	
+	for node in data["nodes"]:
+		var gate = GateFactory.create_gate(node["type"]);
+		if node["script_path"].begins_with("user://"):
+			var custom_script = load(node["script_path"]);
+			gate.set_script(custom_script);
+		gate.name = node["name"];
+		add_child(gate);
+		gate.position_offset = Vector2(node["pos_x"], node["pos_y"]);
+		
+	for c in data["connections"]:
+		_on_connection_request(c["from_node"], c["from_port"], c["to_node"], c["to_port"]);

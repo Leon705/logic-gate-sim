@@ -4,6 +4,7 @@ extends Node
 signal registry_updated;
 
 static var registry: Dictionary = {};
+static var current_id = 0;
 
 func load_definitions(path: String = "res://gate_definition/"):
 	if !DirAccess.dir_exists_absolute(path):
@@ -40,5 +41,7 @@ func create_gate(type_id: String) -> BaseGate:
 	gate.num_outputs = def.num_outputs;
 	gate.title = def.title;
 	gate.type_id = def.type_id;
-
+	gate.name = str(current_id);
+	
+	current_id += 1;
 	return gate;

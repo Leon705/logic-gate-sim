@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://4g7nfq3bd3rk" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cwdtoy1qdx4xr" path="res://editor/editor.gd" id="2_h2yge"]
 [ext_resource type="Script" uid="uid://hqntw52v7ilg" path="res://global/manifest_generator.gd" id="3_h2yge"]
+[ext_resource type="FontFile" uid="uid://b0gw13e2lhhk7" path="res://fonts/JetBrainsMonoNL-Regular.ttf" id="4_1bvp3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1bvp3"]
+font = ExtResource("4_1bvp3")
+font_size = 13
+font_color = Color(1, 1, 1, 0.49803922)
 
 [node name="Main" type="Control" unique_id=2032338056]
 layout_mode = 3
@@ -22,7 +28,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+scroll_offset = Vector2(-40, -40)
 grid_pattern = 1
+panning_scheme = 1
 right_disconnects = true
 show_arrange_button = false
 script = ExtResource("2_h2yge")
@@ -30,6 +38,43 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PopupMenu" type="PopupMenu" parent="GraphEdit" unique_id=1682157565]
 oversampling_override = 1.0
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 15
+
+[node name="UiOverlayContainer" type="Control" parent="." unique_id=298754794]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelVersion" type="Label" parent="UiOverlayContainer" unique_id=2097233713]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0125
+anchor_top = 0.9527778
+anchor_right = 0.10390625
+anchor_bottom = 0.9777778
+grow_vertical = 0
+text = "v1.0 by leon705"
+label_settings = SubResource("LabelSettings_1bvp3")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelInfo" type="Label" parent="UiOverlayContainer" unique_id=235275390]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.88359374
+anchor_top = 0.011111111
+anchor_right = 0.98125
+anchor_bottom = 0.094444446
+grow_horizontal = 0
+text = "g - gate creator
+i - toggle info"
+label_settings = SubResource("LabelSettings_1bvp3")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Node" type="Node" parent="." unique_id=1293832857]
 process_mode = 4
