@@ -28,7 +28,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-scroll_offset = Vector2(-40, -40)
 grid_pattern = 1
 panning_scheme = 1
 right_disconnects = true
