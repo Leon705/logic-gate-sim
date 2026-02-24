@@ -4,6 +4,10 @@ extends GraphEdit
 @onready var context_menu: PopupMenu = $PopupMenu;
 var menu_id_to_gate_type: Array[String] = [];
 
+var signal_queue: Array[Dictionary] = [];
+var is_simulating: bool = false;
+var max_steps: int = 1000;
+
 func _ready() -> void:
 	connect("connection_request", _on_connection_request);
 	connect("disconnection_request", _on_disconnection_request);
@@ -23,6 +27,8 @@ func _on_connection_request(from_node: StringName, from_port: int, to_node: Stri
 	connect_node(from_node, from_port, to_node, to_port);
 	source._add_follower(from_port, target, to_port);
 	target._set_input_value(to_port, source.output_state);
+	
+	queue_signal(target, to_port, source.output_state);
 
 func _on_disconnection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
 	disconnect_node(from_node, from_port, to_node, to_port);
@@ -52,8 +58,10 @@ func _on_context_menu_item_selected(id: int) -> void:
 	var spawn_pos = (scroll_offset + (context_menu.position as Vector2)) / zoom;
 	
 	var gate = GateFactory.create_gate(type_id);
-	add_child(gate);
 	gate.position_offset = spawn_pos;
+	
+	add_child(gate);
+	gate.queued.connect(queue_signal);
 	
 func _on_popup_request(at_position: Vector2) -> void:
 	context_menu.position = get_screen_transform().origin + at_position;
@@ -102,8 +110,34 @@ func load_json(json: String):
 			var custom_script = load(node["script_path"]);
 			gate.set_script(custom_script);
 		gate.name = node["name"];
+		gate.queued.connect(queue_signal);
+		
 		add_child(gate);
 		gate.position_offset = Vector2(node["pos_x"], node["pos_y"]);
 		
 	for c in data["connections"]:
 		_on_connection_request(c["from_node"], c["from_port"], c["to_node"], c["to_port"]);
+
+func queue_signal(target_node: BaseGate, port: int, value: bool) -> void:
+	signal_queue.append({"target": target_node, "port": port, "value": value});
+	if not is_simulating:
+		_run_simulation();
+		
+func _run_simulation() -> void:
+	is_simulating = true;
+	var steps = 0;
+	
+	while signal_queue.size() > 0 and steps < max_steps:
+		var sig = signal_queue.pop_front();
+		var node = sig["target"];
+		
+		if is_instance_valid(node):
+			node._set_input_value(sig["port"], sig["value"]);
+			
+		steps += 1;
+	
+	# handle endless loop
+	if steps >= max_steps:
+		signal_queue.clear();
+		
+	is_simulating = false;
