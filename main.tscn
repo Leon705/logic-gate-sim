@@ -77,5 +77,4 @@ horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Node" type="Node" parent="." unique_id=1293832857]
-process_mode = 4
 script = ExtResource("3_h2yge")
