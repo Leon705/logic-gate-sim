@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://buf12lhebsbnj"]
+
+[ext_resource type="Script" uid="uid://cj2wrygij30fs" path="res://dialog/web_export_dialog.gd" id="1_bvlnm"]
+
+[node name="Control" type="ConfirmationDialog" unique_id=686093463]
+oversampling_override = 1.0
+title = "Export Project"
+position = Vector2i(0, 36)
+visible = true
+script = ExtResource("1_bvlnm")
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=1428508356]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 192.0
+offset_bottom = 52.0
+placeholder_text = "project_name.json"
+caret_blink = true

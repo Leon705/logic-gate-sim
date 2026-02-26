@@ -80,9 +80,9 @@ func _remove_selected_nodes():
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.is_action("delete"):
+		if event.is_action_pressed("delete"):
 			_remove_selected_nodes();
-
+			
 func to_json() -> String:
 	var data = {
 		"nodes": [],
@@ -114,7 +114,9 @@ func load_json(json: String):
 		
 		add_child(gate);
 		gate.position_offset = Vector2(node["pos_x"], node["pos_y"]);
-		
+	
+	await get_tree().process_frame;
+	
 	for c in data["connections"]:
 		_on_connection_request(c["from_node"], c["from_port"], c["to_node"], c["to_port"]);
 

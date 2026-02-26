@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bmjpkspewlte6"]
+
+[ext_resource type="Script" uid="uid://yh5hextomicu" path="res://dialog/default_export_dialog.gd" id="1_5axa0"]
+
+[node name="DefaultExportDialog" type="FileDialog" unique_id=173652331]
+oversampling_override = 1.0
+title = "Export Project"
+position = Vector2i(0, 36)
+visible = true
+mode_overrides_title = false
+access = 2
+script = ExtResource("1_5axa0")

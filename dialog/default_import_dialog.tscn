@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://qlpuj32kqdad"]
+
+[ext_resource type="Script" uid="uid://deca6yuojgpq4" path="res://dialog/default_import_dialog.gd" id="1_iiges"]
+
+[node name="DefaultImportDialog" type="FileDialog" unique_id=173652331]
+oversampling_override = 1.0
+title = "Import Project"
+position = Vector2i(0, 36)
+visible = true
+mode_overrides_title = false
+file_mode = 0
+access = 2
+script = ExtResource("1_iiges")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="GateDefinition" format=3 uid="uid://b02u18cs5x85f"]
+
+[ext_resource type="Script" uid="uid://heh77ohmlwdb" path="res://gate/impl/d_flip_flop.gd" id="1_xtsm3"]
+[ext_resource type="Script" uid="uid://dlijyu0gn6xeb" path="res://global/gate_definition.gd" id="2_wnfhh"]
+
+[resource]
+script = ExtResource("2_wnfhh")
+type_id = "D_FlipFlop"
+title = "D_FF"
+gate_script = ExtResource("1_xtsm3")
+num_inputs = 2
+num_outputs = 1
+metadata/_custom_type_script = "uid://dlijyu0gn6xeb"
