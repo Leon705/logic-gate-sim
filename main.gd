@@ -10,13 +10,14 @@ const default_export_dialog_scene: PackedScene = preload("res://dialog/default_e
 const default_import_dialog_scene: PackedScene = preload("res://dialog/default_import_dialog.tscn");
 
 var should_render_overlay: bool = true;
+var js_upload_callback: JavaScriptObject;		# has to be global to not get garbage-collected
 
 func _ready() -> void:
 	GateFactory.load_definitions_from_manifest();
 	GateFactory.load_definitions("user://gates/");
 	
 	if OS.has_feature("web"):
-		var js_upload_callback = JavaScriptBridge.create_callback(_on_web_import_dialog_confirmed);
+		js_upload_callback = JavaScriptBridge.create_callback(_on_web_import_dialog_confirmed);
 		JavaScriptBridge.get_interface("window").godot_upload_callback = js_upload_callback;
 	
 func _handle_gate_creator() -> void:
@@ -45,7 +46,7 @@ func _input(event: InputEvent) -> void:
 			
 func _handle_load_project():
 	if OS.has_feature("web"):
-		var js_file = FileAccess.open("res://js/web_import_dialog.js", FileAccess.READ);	
+		var js_file = FileAccess.open("res://js/web_import_dialog.js", FileAccess.READ);
 		var js_content: String = js_file.get_as_text();
 		JavaScriptBridge.eval(js_content);
 	else:
